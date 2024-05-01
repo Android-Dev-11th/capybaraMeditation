@@ -1,4 +1,3 @@
 # capybaraMeditation
 
-# students rise up
-# heck yeah
+"yay"
