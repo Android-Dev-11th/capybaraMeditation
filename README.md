@@ -1,3 +1,3 @@
 # capybaraMeditation
 
-"yay"
+yay
