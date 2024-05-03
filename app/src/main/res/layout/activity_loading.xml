@@ -8,13 +8,14 @@
     android:background="#F0EAD2"
     tools:context=".LoadingActivity">
 
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/capy_fore"
         tools:layout_editor_absoluteX="151dp"
-        tools:layout_editor_absoluteY="262dp" />
+        tools:layout_editor_absoluteY="267dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -23,7 +24,7 @@
         android:text="&quot;---------&quot;"
         android:textColor="#6C584C"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="175dp"
+        tools:layout_editor_absoluteX="176dp"
         tools:layout_editor_absoluteY="388dp" />
 
     <TextView
@@ -34,8 +35,12 @@
         android:textColor="#6C584C"
         android:textSize="24sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="87dp"
-        tools:layout_editor_absoluteY="203dp" />
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.869" />
 
     <Button
         android:id="@+id/button"
@@ -44,10 +49,12 @@
         android:backgroundTint="#A98467"
         android:text="launch"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="#F0EAD2"
         android:textColorHighlight="#6C584C"
         android:textColorLink="#A98467"
-        android:textColor="#F0EAD2"
         app:rippleColor="#A98467"
         tools:layout_editor_absoluteX="159dp"
         tools:layout_editor_absoluteY="438dp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
