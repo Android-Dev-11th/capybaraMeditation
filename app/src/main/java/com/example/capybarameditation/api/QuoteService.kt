@@ -6,8 +6,8 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface QuoteService {
-    @GET("{mode}.json")
-    fun getQuoteData(@Path("mode") quoteMode: String): Call<QuoteObj>
+    @GET("random")
+    fun getQuoteData(): Call<List<QuoteObj>>
 
 
 }
