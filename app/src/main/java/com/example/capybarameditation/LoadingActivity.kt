@@ -1,5 +1,6 @@
 package com.example.capybarameditation
 
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -33,6 +34,7 @@ class LoadingActivity : AppCompatActivity() {
             override fun onResponse(call: Call<List<QuoteObj>>, response: Response<List<QuoteObj>>) {
                 quoteResponse = response.body()!!
                 Log.d(TAG, "onResponse: ${response.body()}")
+                binding.quote.text = response.body().get(0)
             }
 
             override fun onFailure(call: Call<List<QuoteObj>>, t: Throwable) {
@@ -40,7 +42,13 @@ class LoadingActivity : AppCompatActivity() {
             }
         })
 
+        val mediaPlayer = MediaPlayer.create(this, R.raw.capysong)
+        mediaPlayer.start()
 
+
+        binding.button.setOnClickListener {
+            mediaPlayer.stop()
+        }
 
     }
 }
