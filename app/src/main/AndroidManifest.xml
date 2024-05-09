@@ -24,6 +24,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".MenuActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".MeditationActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".AccomplishmentActivity"
+            android:exported="true">
+        </activity>
+
+
     </application>
 
 </manifest>

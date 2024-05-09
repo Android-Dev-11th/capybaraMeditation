@@ -45,8 +45,10 @@
 
     <TextView
         android:id="@+id/quote"
-        android:layout_width="wrap_content"
+        android:layout_width="198dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
         android:layout_marginBottom="24dp"
         android:text="&quot;---------&quot;"
         android:textColor="#6C584C"
