@@ -34,7 +34,7 @@ class LoadingActivity : AppCompatActivity() {
             override fun onResponse(call: Call<List<QuoteObj>>, response: Response<List<QuoteObj>>) {
                 quoteResponse = response.body()!!
                 Log.d(TAG, "onResponse: ${response.body()}")
-                binding.quote.text = response.body().get(0)
+                binding.quote.text = response.body()!![0].q
             }
 
             override fun onFailure(call: Call<List<QuoteObj>>, t: Throwable) {
