@@ -1,5 +1,6 @@
 package com.example.capybarameditation
 
+import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -48,6 +49,8 @@ class LoadingActivity : AppCompatActivity() {
 
         binding.button.setOnClickListener {
             mediaPlayer.stop()
+            val menuIntent = Intent(this, MenuActivity::class.java)
+            this.startActivity(menuIntent)
         }
 
     }
