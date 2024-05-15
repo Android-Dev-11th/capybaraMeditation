@@ -14,8 +14,12 @@
         android:backgroundTint="#A98467"
         android:text="10m"
         android:textColor="#F0EAD2"
-        tools:layout_editor_absoluteX="273dp"
-        tools:layout_editor_absoluteY="245dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.152"
+        app:layout_constraintStart_toEndOf="@+id/button3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.362" />
 
     <Button
         android:id="@+id/button3"
@@ -24,8 +28,11 @@
         android:backgroundTint="#A98467"
         android:text="5m"
         android:textColor="#F0EAD2"
-        tools:layout_editor_absoluteX="167dp"
-        tools:layout_editor_absoluteY="247dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.363" />
 
     <Button
         android:id="@+id/button2"
@@ -34,26 +41,38 @@
         android:backgroundTint="#A98467"
         android:text="2m"
         android:textColor="#F0EAD2"
-        tools:layout_editor_absoluteX="64dp"
-        tools:layout_editor_absoluteY="244dp" />
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.214"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.363" />
 
     <Button
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:backgroundTint="#A98467"
         android:text="accomplishments"
         android:textColor="#F0EAD2"
-        tools:layout_editor_absoluteX="124dp"
-        tools:layout_editor_absoluteY="318dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
 
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button5"
-        app:srcCompat="@mipmap/capy_fore"
-        tools:layout_editor_absoluteX="151dp" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@mipmap/capybutton_foreground" />
 
     <TextView
         android:id="@+id/textView"
@@ -63,7 +82,11 @@
         android:textColor="#6C584C"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="64dp"
-        tools:layout_editor_absoluteY="135dp" />
+        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.812" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
