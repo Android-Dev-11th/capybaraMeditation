@@ -13,9 +13,6 @@ import android.widget.Chronometer
 class MeditationActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMenuBinding
-    lateinit var timer: Chronometer
-    lateinit var starts: Button
-    lateinit var resets: Button
     var bases: Long = 0
     var isRunning: Boolean = false
 
