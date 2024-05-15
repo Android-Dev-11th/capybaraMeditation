@@ -1,7 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#F0EAD2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:context=".MainActivity">
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="263dp"
+            android:layout_height="278dp"
+            android:layout_marginEnd="88dp"
+            android:foregroundTint="#A98467"
+            android:indeterminateTint="#A98467"
+            android:progressBackgroundTint="#A98467"
+            android:progressTint="#A98467"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="159dp" />
+
+        <Chronometer
+            android:id="@+id/chronometer_main_stopwatch"
+            android:layout_width="wrap_content"
+            android:layout_height="79dp"
+            android:textColor="#6C584C"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="@+id/progressBar"
+            app:layout_constraintEnd_toEndOf="@+id/progressBar"
+            app:layout_constraintStart_toStartOf="@+id/progressBar"
+            app:layout_constraintTop_toTopOf="@+id/progressBar" />
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#A98467"
+            android:text="start"
+            android:textColor="#F0EAD2"
+            app:layout_constraintEnd_toEndOf="@+id/resetButton"
+            tools:layout_editor_absoluteY="258dp" />
+
+        <Button
+            android:id="@+id/resetButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#A98467"
+            android:text="reset"
+            android:textColor="#F0EAD2"
+            app:layout_constraintTop_toBottomOf="@+id/startButton"
+            tools:layout_editor_absoluteX="288dp" />
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="#A98467"
+            android:text="home"
+            android:textColor="#F0EAD2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar"
+            app:layout_constraintVertical_bias="0.392"
+            tools:layout_editor_absoluteX="178dp" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="86dp"
+            android:layout_height="79dp"
+            app:layout_constraintBottom_toTopOf="@+id/back"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@mipmap/capy_fore"
+            tools:layout_editor_absoluteX="178dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
