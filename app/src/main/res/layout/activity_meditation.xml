@@ -13,10 +13,10 @@
         android:background="#F0EAD2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         tools:context=".MainActivity">
 
 
@@ -30,9 +30,12 @@
             android:indeterminateTint="#A98467"
             android:progressBackgroundTint="#A98467"
             android:progressTint="#A98467"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.266"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="159dp" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.324" />
 
         <Chronometer
             android:id="@+id/timer"
@@ -43,27 +46,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/progressBar"
             app:layout_constraintEnd_toEndOf="@+id/progressBar"
             app:layout_constraintStart_toStartOf="@+id/progressBar"
-            app:layout_constraintTop_toTopOf="@+id/progressBar" />
-
-        <Button
-            android:id="@+id/starts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#A98467"
-            android:text="start"
-            android:textColor="#F0EAD2"
-            app:layout_constraintEnd_toEndOf="@+id/resets"
-            tools:layout_editor_absoluteY="258dp" />
-
-        <Button
-            android:id="@+id/resets"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#A98467"
-            android:text="reset"
-            android:textColor="#F0EAD2"
-            app:layout_constraintTop_toBottomOf="@+id/starts"
-            tools:layout_editor_absoluteX="288dp" />
+            app:layout_constraintTop_toTopOf="@+id/progressBar"
+            app:layout_constraintVertical_bias="0.502" />
 
         <Button
             android:id="@+id/back"
@@ -74,19 +58,51 @@
             android:text="home"
             android:textColor="#F0EAD2"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/progressBar"
-            app:layout_constraintVertical_bias="0.392"
-            tools:layout_editor_absoluteX="178dp" />
+            app:layout_constraintVertical_bias="0.274" />
 
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="86dp"
             android:layout_height="79dp"
             app:layout_constraintBottom_toTopOf="@+id/back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/progressBar"
-            app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@mipmap/capy_fore"
-            tools:layout_editor_absoluteX="178dp" />
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@mipmap/capy_fore" />
+
+        <Button
+            android:id="@+id/starts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#A98467"
+            android:text="start"
+            android:textColor="#F0EAD2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/resets"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.361" />
+
+        <Button
+            android:id="@+id/resets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#A98467"
+            android:text="reset"
+            android:textColor="#F0EAD2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.891"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/starts"
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
