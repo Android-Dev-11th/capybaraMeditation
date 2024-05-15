@@ -8,11 +8,12 @@ import android.os.SystemClock
 import android.util.Log
 import android.widget.Button
 import android.widget.Chronometer
+import com.example.capybarameditation.databinding.ActivityMeditationBinding
 
 
 class MeditationActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMenuBinding
+    private lateinit var binding: ActivityMeditationBinding
     var bases: Long = 0
     var isRunning: Boolean = false
 
@@ -20,28 +21,28 @@ class MeditationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMenuBinding.inflate(layoutInflater)
+        binding = ActivityMeditationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
-        starts.setOnClickListener{
+        binding.starts.setOnClickListener{
             if(!isRunning) {
                 //when stopped
-                timer.setBase(timer.getBase()+SystemClock.elapsedRealtime()-bases)
-                timer.start()
+                binding.timer.setBase(binding.timer.getBase()+SystemClock.elapsedRealtime()-bases)
+                binding.timer.start()
                 isRunning = true
-                starts.setText("Stop")
+                binding.starts.setText("Stop")
             }else{
                 //when running
                 bases = SystemClock.elapsedRealtime()
-                timer.stop()
+                binding.timer.stop()
                 isRunning = false
-                starts.setText("Start")
+                binding.starts.setText("Start")
             }
         }
 
-        resets.setOnClickListener {
-            timer.setBase(SystemClock.elapsedRealtime())
+        binding.resets.setOnClickListener {
+            binding.timer.setBase(SystemClock.elapsedRealtime())
         }
 
 
