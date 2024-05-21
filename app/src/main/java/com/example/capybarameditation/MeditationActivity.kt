@@ -20,61 +20,95 @@ class MeditationActivity : AppCompatActivity() {
     var isRunning: Boolean = false
 
     var displayTime = 0L
-    var min = 0
+    var seconds = 0
+    var leftover = 0
+    var second = 0
+    var leftovers = 0
+    private lateinit var counting: CountDownTimer
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreate(savedInstanate: Bundle?) {
+        super.onCreate(savedInstanate)
         binding = ActivityMeditationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        min = intent.getIntExtra("meditationLength", 0)
+        val min = intent.getIntExtra("meditationLength", 0)
 
         //set timer to initial values
         var initial = min*60000
-        var seconds = initial / 60000
-        var leftover = initial % 60000
-        if(leftover<10){
-            binding.timer.text = "" + seconds + ":0" + leftover / 1000
+         second = initial / 60000
+         leftover = initial % 60000
+       if(leftover<10){
+            binding.timer.text = "" + second + ":0" + leftover / 1000
         }else {
-            binding.timer.text = "" + seconds + ":" + leftover / 1000
+            binding.timer.text = "" + second + ":" + leftover / 1000
         }
 
         //declare the timer
-        var counting:CountDownTimer = object : CountDownTimer((min*60000).toLong(), 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                var seconds = millisUntilFinished / 60000
-                var leftover = millisUntilFinished % 60000
-                if(leftover<10000){
-                    binding.timer.text = "" + seconds + ":0" + leftover / 1000
-                }else {
-                    binding.timer.text = "" + seconds + ":" + leftover / 1000
-                }
-            }
-            override fun onFinish() {
-                binding.timer.text = "done!"
-            }
-        }
+
 
 
         binding.starts.setOnClickListener{
             if(!isRunning) {
                 //when stopped
+
+                counting = object : CountDownTimer((second*60000+leftover).toLong(), 1000) {
+                    override fun onTick(millisUntilFinished: Long) {
+                        second = (millisUntilFinished / 60000).toInt()
+                        leftover = (millisUntilFinished % 60000).toInt()
+                        if(leftover<1000){
+                            binding.timer.text = "" + second + ":00"
+                        }else if(leftover<10000){
+                            binding.timer.text = "" + second + ":0" + leftover / 1000
+                        }else {
+                            binding.timer.text = "" + second + ":" + leftover / 1000
+                        }
+                    }
+                    override fun onFinish() {
+                        binding.timer.text = "capy!"
+                    }
+                }
                 counting.start()
 
                 isRunning = true
-                binding.starts.setText("Stop")
+                binding.starts.setText("pause")
             }else{
                 //when running
-                bases = SystemClock.elapsedRealtime()
 
                 isRunning = false
-                binding.starts.setText("Start")
+                binding.starts.setText("start")
+
+                counting.cancel()
+                if(leftover<1000){
+                    binding.timer.text = "" + second + ":00"
+                }else if(leftover<10000){
+                    binding.timer.text = "" + second + ":0" + leftover / 1000
+                }else {
+                    binding.timer.text = "" + second + ":" + leftover / 1000
+                }
             }
         }
 
 
         binding.resets.setOnClickListener {
-            binding.timer.text= "00:00"
+            binding.timer.text = "" + min + ":00"
+
+            //declare the timer
+            var counting:CountDownTimer = object : CountDownTimer((min*60000).toLong(), 1000) {
+                override fun onTick(millisUntilFinished: Long) {
+                    second = (millisUntilFinished / 60000).toInt()
+                    leftover = (millisUntilFinished % 60000).toInt()
+                    if(leftover<1000){
+                        binding.timer.text = "" + second + ":00"
+                    }else if(leftover<10000){
+                        binding.timer.text = "" + second + ":0" + leftover / 1000
+                    }else {
+                        binding.timer.text = "" + second + ":" + leftover / 1000
+                    }
+                }
+                override fun onFinish() {
+                    binding.timer.text = "capy!"
+                }
+            }
         }
 
         binding.back.setOnClickListener {
