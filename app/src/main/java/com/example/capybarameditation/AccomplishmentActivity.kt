@@ -16,11 +16,33 @@ class AccomplishmentActivity : AppCompatActivity() {
         binding = ActivityAccomplishmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //TODO: get info about hours meditated, check if it meets threshold, change image res and
+        //TODO: text if so
+
+
+        //for testing
+        var minMeditated = 30
+
+        if (minMeditated > 5){
+            binding.normaltrophy.setImageResource(R.mipmap.capytrophy_foreground)
+        }
+        if (minMeditated > 10){
+            binding.silvertrophy.setImageResource(R.mipmap.capytrophysilver_foreground)
+        }
+        if (minMeditated > 20){
+            binding.goldtrophy.setImageResource(R.mipmap.capytrophygold_foreground)
+        }
+        if (minMeditated > 30){
+            binding.diamondtrophy.setImageResource(R.mipmap.capytrophydiamond_foreground)
+        }
+
+
+
+
         binding.back2.setOnClickListener {
             val menuIntent = Intent(this, MenuActivity::class.java)
             startActivity(menuIntent)
         }
     }
-
 
 }
