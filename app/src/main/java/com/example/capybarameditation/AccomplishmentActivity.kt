@@ -1,5 +1,6 @@
 package com.example.capybarameditation
 
+import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,11 @@ class AccomplishmentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAccomplishmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.back2.setOnClickListener {
+            val menuIntent = Intent(this, MenuActivity::class.java)
+            startActivity(menuIntent)
+        }
     }
 
 
