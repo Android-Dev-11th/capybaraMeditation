@@ -1,5 +1,6 @@
 package com.example.capybarameditation
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.capybarameditation.databinding.ActivityMenuBinding
@@ -45,6 +46,10 @@ class MeditationActivity : AppCompatActivity() {
             binding.timer.setBase(SystemClock.elapsedRealtime())
         }
 
+        binding.back.setOnClickListener {
+            val menuIntent = Intent(this, MenuActivity::class.java)
+            startActivity(menuIntent)
+        }
 
 
     }
