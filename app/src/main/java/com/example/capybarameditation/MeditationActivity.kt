@@ -26,8 +26,8 @@ class MeditationActivity : AppCompatActivity() {
     var leftovers = 0
     private lateinit var counting: CountDownTimer
 
-    override fun onCreate(savedInstanate: Bundle?) {
-        super.onCreate(savedInstanate)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         binding = ActivityMeditationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -114,6 +114,10 @@ class MeditationActivity : AppCompatActivity() {
         binding.back.setOnClickListener {
             val menuIntent = Intent(this, MenuActivity::class.java)
             startActivity(menuIntent)
+
+            val accomplishmentIntent = Intent(this, AccomplishmentActivity::class.java)
+            var timeMeditated = min * 60000 - second*60000+leftover
+            accomplishmentIntent.putExtra("leftovers", timeMeditated)
         }
 
 

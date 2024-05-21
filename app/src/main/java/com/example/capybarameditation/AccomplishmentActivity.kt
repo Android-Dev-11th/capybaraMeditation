@@ -19,32 +19,32 @@ class AccomplishmentActivity : AppCompatActivity() {
         //TODO: get info about hours meditated, check if it meets threshold, change image res and
         //TODO: text if so
 
+        var msMeditated = 0
+
+        var incoming = intent.getIntExtra("leftovers", 0)
+        msMeditated += incoming
+
         binding.normaltext.text = "LOCKED - Meditate for 5 minutes"
         binding.silvertext.text = "LOCKED - Meditate for 10 minutes"
         binding.goldtext.text = "LOCKED - Meditate for 20 minutes"
         binding.diamondtext.text = "LOCKED - Meditate for 30 minutes"
 
-
-        //skeleton
-        var minMeditated = 30
-
-
-        if (minMeditated >= 5){
+        if (msMeditated >= 5*60000){
             binding.normaltrophy.setImageResource(R.mipmap.capytrophy_foreground)
             binding.normaltext.text = "NORMAL CAPYBARA - Meditate for 5 minutes"
 
         }
-        if (minMeditated >= 10){
+        if (msMeditated >= 10*60000){
             binding.silvertrophy.setImageResource(R.mipmap.capytrophysilver_foreground)
             binding.silvertext.text = "SILVER CAPYBARA - Meditate for 10 minutes"
 
         }
-        if (minMeditated >= 20){
+        if (msMeditated >= 20*60000){
             binding.goldtrophy.setImageResource(R.mipmap.capytrophygold_foreground)
             binding.goldtext.text = "GOLD CAPYBARA - Meditate for 20 minutes"
 
         }
-        if (minMeditated >= 30){
+        if (msMeditated >= 30*60000){
             binding.diamondtrophy.setImageResource(R.mipmap.capytrophydiamond_foreground)
             binding.diamondtext.text = "DIAMOND CAPYBARA - Meditate for 30 minutes"
 
