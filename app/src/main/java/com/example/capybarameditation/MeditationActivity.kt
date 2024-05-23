@@ -90,6 +90,9 @@ class MeditationActivity : AppCompatActivity() {
 
 
         binding.resets.setOnClickListener {
+            val accomplishmentIntent = Intent(this, AccomplishmentActivity::class.java)
+            var timeMeditated = min * 60000 - second*60000+leftover
+            accomplishmentIntent.putExtra("leftovers", timeMeditated)
             binding.timer.text = "" + min + ":00"
 
             //declare the timer
