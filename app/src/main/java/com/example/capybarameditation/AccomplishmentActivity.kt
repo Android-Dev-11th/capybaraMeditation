@@ -10,6 +10,7 @@ import com.example.capybarameditation.databinding.ActivityLoadingBinding
 class AccomplishmentActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAccomplishmentBinding
+    var msMeditated = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +20,8 @@ class AccomplishmentActivity : AppCompatActivity() {
         //TODO: get info about hours meditated, check if it meets threshold, change image res and
         //TODO: text if so
 
-        var msMeditated = 0
+        msMeditated = MeditationActivity.totalTime
+
 
         var incoming = intent.getIntExtra("leftovers", 0)
         msMeditated += incoming
@@ -50,13 +52,15 @@ class AccomplishmentActivity : AppCompatActivity() {
 
         }
 
-
-
-
         binding.back2.setOnClickListener {
             val menuIntent = Intent(this, MenuActivity::class.java)
             startActivity(menuIntent)
         }
     }
+    override fun onResume(){
+        super.onResume()
+        msMeditated = MeditationActivity.totalTime
+    }
+
 
 }
