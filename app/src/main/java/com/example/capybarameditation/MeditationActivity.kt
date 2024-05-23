@@ -94,23 +94,31 @@ class MeditationActivity : AppCompatActivity() {
             var timeMeditated = min * 60000 - second*60000+leftover
             accomplishmentIntent.putExtra("leftovers", timeMeditated)
             binding.timer.text = "" + min + ":00"
-
+            counting.cancel()
+            //reset trackers
+            initial = min * 60000
+            second = initial / 60000
+            leftover = initial % 60000
             //declare the timer
-            var counting:CountDownTimer = object : CountDownTimer((min*60000).toLong(), 1000) {
+            var counting: CountDownTimer = object : CountDownTimer((min * 60000).toLong(), 1000) {
                 override fun onTick(millisUntilFinished: Long) {
                     second = (millisUntilFinished / 60000).toInt()
                     leftover = (millisUntilFinished % 60000).toInt()
-                    if(leftover<1000){
+                    if (leftover < 1000) {
                         binding.timer.text = "" + second + ":00"
-                    }else if(leftover<10000){
+                    } else if (leftover < 10000) {
                         binding.timer.text = "" + second + ":0" + leftover / 1000
-                    }else {
+                    } else {
                         binding.timer.text = "" + second + ":" + leftover / 1000
                     }
                 }
+
                 override fun onFinish() {
                     binding.timer.text = "capy!"
                 }
+            }
+            if (isRunning){
+                counting.start()
             }
         }
 
