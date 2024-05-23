@@ -19,6 +19,16 @@
         app:layout_constraintVertical_bias="0.0"
         tools:context=".MainActivity">
 
+        <!--progress bar implementation-->
+        <ProgressBar
+            android:id="@+id/secondProgressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/circular_shape"
+            android:indeterminate="false"
+            android:progressDrawable="@drawable/circular_progress_bar"
+            android:textAlignment="center" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -27,6 +37,7 @@
             android:layout_height="278dp"
             android:layout_marginEnd="88dp"
             android:foregroundTint="#A98467"
+            android:indeterminate="false"
             android:indeterminateTint="#A98467"
             android:progressBackgroundTint="#A98467"
             android:progressTint="#A98467"

@@ -3,13 +3,8 @@ package com.example.capybarameditation
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
-import com.example.capybarameditation.databinding.ActivityMenuBinding
-
-import android.os.SystemClock
-import android.util.Log
-import android.widget.Button
-import android.widget.Chronometer
 import com.example.capybarameditation.databinding.ActivityMeditationBinding
 
 
@@ -44,10 +39,31 @@ class MeditationActivity : AppCompatActivity() {
         }
 
         //declare the timer
+        binding.progressBar.isIndeterminate = false
+        binding.progressBar.max = 100
+        binding.progressBar.progress = 100
+
+        //TODO fix all this
+        var i = 100
+        val handler = Handler()
+        handler.postDelayed(object : Runnable {
+            override fun run() {
+                // set the limitations for the numeric
+                // text under the progress bar
+                if (i >= 0) {
+                    binding.secondProgressBar.setProgress(i)
+                    i--
+                    handler.postDelayed(this, 200)
+                } else {
+                    handler.removeCallbacks(this)
+                }
+            }
+        }, 100)
 
 
 
         binding.starts.setOnClickListener{
+           var total = second*60000+leftover
             if(!isRunning) {
                 //when stopped
 
@@ -62,6 +78,7 @@ class MeditationActivity : AppCompatActivity() {
                         }else {
                             binding.timer.text = "" + second + ":" + leftover / 1000
                         }
+                        binding.progressBar.progress = (second*60000+leftover)/total
                     }
                     override fun onFinish() {
                         binding.timer.text = "capy!"
