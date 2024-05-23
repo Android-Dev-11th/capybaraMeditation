@@ -23,15 +23,12 @@ class AccomplishmentActivity : AppCompatActivity() {
         msMeditated = MeditationActivity.totalTime
 
 
-        var incoming = intent.getIntExtra("leftovers", 0)
-        msMeditated += incoming
-
         binding.normaltext.text = "LOCKED - Meditate for 5 minutes"
         binding.silvertext.text = "LOCKED - Meditate for 10 minutes"
         binding.goldtext.text = "LOCKED - Meditate for 20 minutes"
         binding.diamondtext.text = "LOCKED - Meditate for 30 minutes"
 
-        if (msMeditated >= 5*60000){
+        if (msMeditated >= 0.25*60000){
             binding.normaltrophy.setImageResource(R.mipmap.capytrophy_foreground)
             binding.normaltext.text = "NORMAL CAPYBARA - Meditate for 5 minutes"
 

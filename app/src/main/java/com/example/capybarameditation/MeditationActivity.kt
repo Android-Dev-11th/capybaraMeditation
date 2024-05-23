@@ -6,6 +6,7 @@ import android.os.CountDownTimer
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.example.capybarameditation.databinding.ActivityMeditationBinding
+import java.io.File
 
 
 class MeditationActivity : AppCompatActivity() {
@@ -141,16 +142,16 @@ class MeditationActivity : AppCompatActivity() {
             }
         }
 
-        fun getLeftoverTime(): Int{
-            return min * 60000 - second*60000+leftover
+        fun writeLeftoverTime(){
+            File("userhours.txt").writeText((min * 60000 - second*60000+leftover).toString())
         }
+
 
         binding.back.setOnClickListener {
             val menuIntent = Intent(this, MenuActivity::class.java)
             startActivity(menuIntent)
 
-            totalTime += getLeftoverTime()
-
+            writeLeftoverTime()
         }
 
 
