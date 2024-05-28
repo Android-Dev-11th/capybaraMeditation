@@ -50,16 +50,16 @@ class MeditationActivity : AppCompatActivity() {
         //binding.secondProgressBar.progress = 100
 
         //TODO fix all this
-        var i = 100
+        var i = min*60
         val handler = Handler()
         handler.postDelayed(object : Runnable {
             override fun run() {
                 // set the limitations for the numeric
                 // text under the progress bar
                 if (i >= 0) {
-                    binding.secondProgressBar.setProgress(i)
+                    binding.secondProgressBar.progress = (i.toFloat()/(min*60)*100).toInt()
                     i--
-                    handler.postDelayed(this, 200)
+                    handler.postDelayed(this, 1000)
                 } else {
                     handler.removeCallbacks(this)
                 }
@@ -142,16 +142,10 @@ class MeditationActivity : AppCompatActivity() {
             }
         }
 
-        fun writeLeftoverTime(){
-            File("userhours.txt").writeText((min * 60000 - second*60000+leftover).toString())
-        }
-
-
         binding.back.setOnClickListener {
             val menuIntent = Intent(this, MenuActivity::class.java)
             startActivity(menuIntent)
 
-            writeLeftoverTime()
         }
 
 

@@ -31,9 +31,9 @@
             android:progressDrawable="@drawable/circular_progress_bar"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="@+id/timer"
-            app:layout_constraintHorizontal_bias="0.275"
+            app:layout_constraintHorizontal_bias="0.264"
             app:layout_constraintStart_toStartOf="@+id/timer"
-            tools:layout_editor_absoluteY="-106dp" />
+            tools:layout_editor_absoluteY="26dp" />
 
         <Button
             android:id="@+id/back"
