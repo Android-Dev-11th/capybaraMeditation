@@ -31,6 +31,9 @@ class LoadingActivity : AppCompatActivity() {
         val quoteService = RetrofitHelper.getInstance().create(QuoteService::class.java)
         var quoteCall = quoteService.getQuoteData()
 
+        val capybaraSong = MediaPlayer.create(this, R.raw.capysong)
+        capybaraSong.start()
+
         quoteCall.enqueue(object: Callback<List<QuoteObj>> {
             override fun onResponse(call: Call<List<QuoteObj>>, response: Response<List<QuoteObj>>) {
                 Log.d(TAG, "onResponse: ${response.body()}")
@@ -48,6 +51,7 @@ class LoadingActivity : AppCompatActivity() {
 
 
         binding.button.setOnClickListener {
+            capybaraSong.stop()
             val menuIntent = Intent(this, MenuActivity::class.java)
             this.startActivity(menuIntent)
         }
