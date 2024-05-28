@@ -1,6 +1,7 @@
 package com.example.capybarameditation
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
@@ -32,6 +33,7 @@ class MeditationActivity : AppCompatActivity() {
         binding = ActivityMeditationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val capybaraSong = MediaPlayer.create(this, R.raw.capysong)
         val min = intent.getIntExtra("meditationLength", 0)
 
         //set timer to initial values
@@ -73,6 +75,7 @@ class MeditationActivity : AppCompatActivity() {
             if(!isRunning) {
                 //when stopped
 
+                capybaraSong.start()
                 counting = object : CountDownTimer((second*60000+leftover).toLong(), 1000) {
                     override fun onTick(millisUntilFinished: Long) {
                         second = (millisUntilFinished / 60000).toInt()
@@ -97,6 +100,7 @@ class MeditationActivity : AppCompatActivity() {
             }else{
                 //when running
 
+                capybaraSong.stop()
                 isRunning = false
                 binding.starts.setText("start")
 
@@ -113,6 +117,7 @@ class MeditationActivity : AppCompatActivity() {
 
 
         binding.resets.setOnClickListener {
+
             binding.timer.text = "" + min + ":00"
             counting.cancel()
             //reset trackers
@@ -143,6 +148,7 @@ class MeditationActivity : AppCompatActivity() {
         }
 
         binding.back.setOnClickListener {
+            capybaraSong.stop()
             val menuIntent = Intent(this, MenuActivity::class.java)
             startActivity(menuIntent)
 

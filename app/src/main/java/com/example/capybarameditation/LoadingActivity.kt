@@ -48,7 +48,6 @@ class LoadingActivity : AppCompatActivity() {
 
 
         binding.button.setOnClickListener {
-            mediaPlayer.stop()
             val menuIntent = Intent(this, MenuActivity::class.java)
             this.startActivity(menuIntent)
         }
