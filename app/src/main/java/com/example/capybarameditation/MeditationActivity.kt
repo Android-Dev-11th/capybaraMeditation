@@ -45,9 +45,9 @@ class MeditationActivity : AppCompatActivity() {
         }
 
         //declare the timer
-        binding.progressBar.isIndeterminate = false
-        binding.progressBar.max = 100
-        binding.progressBar.progress = 100
+        //binding.secondProgressBar.isIndeterminate = false
+        //binding.secondProgressBar.max = 100
+        //binding.secondProgressBar.progress = 100
 
         //TODO fix all this
         var i = 100
@@ -84,7 +84,7 @@ class MeditationActivity : AppCompatActivity() {
                         }else {
                             binding.timer.text = "" + second + ":" + leftover / 1000
                         }
-                        binding.progressBar.progress = (second*60000+leftover)/total
+                        //binding.secondProgressBar.progress = (second*60000+leftover)/total
                     }
                     override fun onFinish() {
                         binding.timer.text = "capy!"
