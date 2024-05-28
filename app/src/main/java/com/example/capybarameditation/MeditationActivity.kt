@@ -34,6 +34,8 @@ class MeditationActivity : AppCompatActivity() {
 
         val min = intent.getIntExtra("meditationLength", 0)
 
+
+
         //set timer to initial values
         var initial = min*60000
          second = initial / 60000
@@ -44,27 +46,15 @@ class MeditationActivity : AppCompatActivity() {
             binding.timer.text = "" + second + ":" + leftover / 1000
         }
 
+        binding.secondProgressBar.progress = 100
+
+
         //declare the timer
         //binding.secondProgressBar.isIndeterminate = false
         //binding.secondProgressBar.max = 100
         //binding.secondProgressBar.progress = 100
 
         //TODO fix all this
-        var i = min*60
-        val handler = Handler()
-        handler.postDelayed(object : Runnable {
-            override fun run() {
-                // set the limitations for the numeric
-                // text under the progress bar
-                if (i >= 0) {
-                    binding.secondProgressBar.progress = (i.toFloat()/(min*60)*100).toInt()
-                    i--
-                    handler.postDelayed(this, 1000)
-                } else {
-                    handler.removeCallbacks(this)
-                }
-            }
-        }, 100)
 
 
 
@@ -109,6 +99,24 @@ class MeditationActivity : AppCompatActivity() {
                     binding.timer.text = "" + second + ":" + leftover / 1000
                 }
             }
+
+            var i = min*60
+            val handler = Handler()
+            handler.postDelayed(object : Runnable {
+                override fun run() {
+                    // set the limitations for the numeric
+                    // text under the progress bar
+                    if (i >= 0) {
+                        binding.secondProgressBar.progress = (i.toFloat()/(min*60)*100).toInt()
+                        i--
+                        handler.postDelayed(this, 1000)
+                    } else {
+                        handler.removeCallbacks(this)
+                    }
+                }
+            }, 100)
+
+
         }
 
 
