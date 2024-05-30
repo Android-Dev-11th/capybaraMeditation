@@ -13,17 +13,12 @@ import java.io.File
 class MeditationActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMeditationBinding
-    var bases: Long = 0
     var isRunning: Boolean = false
-
-    var displayTime = 0L
-    var seconds = 0
     var leftover = 0
     var second = 0
-    var leftovers = 0
     private lateinit var counting: CountDownTimer
 
-    companion object{
+    companion object {
         var totalTime = 0
     }
 
@@ -37,14 +32,13 @@ class MeditationActivity : AppCompatActivity() {
         val min = intent.getIntExtra("meditationLength", 0)
 
 
-
         //set timer to initial values
-        var initial = min*60000
-         second = initial / 60000
-         leftover = initial % 60000
-       if(leftover<10){
+        var initial = min * 60000
+        second = initial / 60000
+        leftover = initial % 60000
+        if (leftover < 10) {
             binding.timer.text = "" + second + ":0" + leftover / 1000
-        }else {
+        } else {
             binding.timer.text = "" + second + ":" + leftover / 1000
         }
 
@@ -57,28 +51,32 @@ class MeditationActivity : AppCompatActivity() {
         //binding.secondProgressBar.progress = 100
 
         //TODO fix all this
+        val handler = Handler()
+        var timerRunnable : Runnable? = null
+        var i = min * 60
 
-
-
-        binding.starts.setOnClickListener{
-           var total = second*60000+leftover
-            if(!isRunning) {
+        fun getLeftoverTime(): Int {
+            return min*60000 - second*60000 - leftover
+        }
+        binding.starts.setOnClickListener {
+            if (!isRunning) {
                 //when stopped
 
                 capybaraSong.start()
-                counting = object : CountDownTimer((second*60000+leftover).toLong(), 1000) {
+                counting = object : CountDownTimer((second * 60000 + leftover).toLong(), 1000) {
                     override fun onTick(millisUntilFinished: Long) {
                         second = (millisUntilFinished / 60000).toInt()
                         leftover = (millisUntilFinished % 60000).toInt()
-                        if(leftover<1000){
+                        if (leftover < 1000) {
                             binding.timer.text = "" + second + ":00"
-                        }else if(leftover<10000){
+                        } else if (leftover < 10000) {
                             binding.timer.text = "" + second + ":0" + leftover / 1000
-                        }else {
+                        } else {
                             binding.timer.text = "" + second + ":" + leftover / 1000
                         }
                         //binding.secondProgressBar.progress = (second*60000+leftover)/total
                     }
+
                     override fun onFinish() {
                         binding.timer.text = "capy!"
                     }
@@ -87,38 +85,42 @@ class MeditationActivity : AppCompatActivity() {
 
                 isRunning = true
                 binding.starts.setText("pause")
-            }else{
+              timerRunnable = object : Runnable {
+                    override fun run() {
+                        // set the limitations for the numeric
+                        // text under the progress bar
+
+                        if (i >= 0) {
+                            binding.secondProgressBar.progress =
+                                (i.toFloat() / (min * 60) * 100).toInt()
+                            i--
+                            handler.postDelayed(this, 1000)
+                        } else {
+                            handler.removeCallbacks(this)
+                        }
+                    }
+                }
+
+                handler.postDelayed(timerRunnable!!, 100)
+            } else {
+
                 //when running
+                handler.removeCallbacks(timerRunnable!!)
 
                 capybaraSong.stop()
                 isRunning = false
                 binding.starts.setText("start")
+                totalTime += getLeftoverTime()
 
                 counting.cancel()
-                if(leftover<1000){
+                if (leftover < 1000) {
                     binding.timer.text = "" + second + ":00"
-                }else if(leftover<10000){
+                } else if (leftover < 10000) {
                     binding.timer.text = "" + second + ":0" + leftover / 1000
-                }else {
+                } else {
                     binding.timer.text = "" + second + ":" + leftover / 1000
                 }
             }
-
-            var i = min*60
-            val handler = Handler()
-            handler.postDelayed(object : Runnable {
-                override fun run() {
-                    // set the limitations for the numeric
-                    // text under the progress bar
-                    if (i >= 0) {
-                        binding.secondProgressBar.progress = (i.toFloat()/(min*60)*100).toInt()
-                        i--
-                        handler.postDelayed(this, 1000)
-                    } else {
-                        handler.removeCallbacks(this)
-                    }
-                }
-            }, 100)
 
 
         }
@@ -129,6 +131,8 @@ class MeditationActivity : AppCompatActivity() {
             binding.timer.text = "" + min + ":00"
             counting.cancel()
             //reset trackers
+            i=min*60
+            binding.secondProgressBar.progress = 100
             initial = min * 60000
             second = initial / 60000
             leftover = initial % 60000
@@ -150,7 +154,7 @@ class MeditationActivity : AppCompatActivity() {
                     binding.timer.text = "capy!"
                 }
             }
-            if (isRunning){
+            if (isRunning) {
                 counting.start()
             }
         }
