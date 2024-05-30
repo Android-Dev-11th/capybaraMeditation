@@ -29,22 +29,22 @@ class AccomplishmentActivity : AppCompatActivity() {
         binding.goldtext.text = "LOCKED - Meditate for 20 minutes"
         binding.diamondtext.text = "LOCKED - Meditate for 30 minutes"
 
-            if (msMeditated >= 0.25 * 60000) {
+            if (msMeditated >= 5 * 60000) {
                 binding.normaltrophy.setImageResource(R.mipmap.capytrophy_foreground)
                 binding.normaltext.text = "NORMAL CAPYBARA - Meditate for 5 minutes"
 
             }
-            if (msMeditated >= 0.5 * 60000) {
+            if (msMeditated >= 10 * 60000) {
                 binding.silvertrophy.setImageResource(R.mipmap.capytrophysilver_foreground)
                 binding.silvertext.text = "SILVER CAPYBARA - Meditate for 10 minutes"
 
             }
-            if (msMeditated >= 0.75 * 60000) {
+            if (msMeditated >= 20 * 60000) {
                 binding.goldtrophy.setImageResource(R.mipmap.capytrophygold_foreground)
                 binding.goldtext.text = "GOLD CAPYBARA - Meditate for 20 minutes"
 
             }
-            if (msMeditated >= 60000) {
+            if (msMeditated >= 30* 60000) {
                 binding.diamondtrophy.setImageResource(R.mipmap.capytrophydiamond_foreground)
                 binding.diamondtext.text = "DIAMOND CAPYBARA - Meditate for 30 minutes"
 
